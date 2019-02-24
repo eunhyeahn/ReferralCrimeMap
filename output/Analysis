@@ -1,0 +1,115 @@
+************************
+ * DCFS data analysis * 
+ ************************
+
+ * DCFS data
+       age_range removal_ind  ... zipcode total_population
+0  10 - 13 years           N  ...   90262            69745
+1  10 - 13 years           N  ...   90003            66266
+2    5 - 9 years           N  ...   91402            69817
+3  16 - 17 years           N  ...   91352            47807
+4    5 - 9 years           N  ...   91356            29458
+
+[5 rows x 8 columns]
+
+ ... Recoding variables...
+
+ * Demographic information of referred children in 2016
+
+ * Referred chileren's age
+age
+<5 years old       28.172144
+5-13 years old     52.159057
+14-17 years old    19.609617
+18 and Over         0.059183
+Name: rate, dtype: float64
+
+ * Children's gender
+gender
+Male       49.839760
+Female     49.999442
+Unknown     0.160799
+Name: rate, dtype: float64
+
+ * Children's ethnicity
+ethnicity
+White                              9.854500
+Other                              8.984624
+Hispanic                          60.803100
+Black                             18.045180
+Asian/Pacific Islander             2.184181
+American Indian/Alaskan Native     0.128416
+Name: rate, dtype: float64
+
+ * DCFS response type
+referral_response_desc
+5 Day                   61.607093
+Immediate               21.178520
+3 Day                    0.053600
+10 Day                   0.012283
+Evaluate Out            17.146271
+N/A Secondary Report     0.002233
+Name: rate, dtype: float64
+
+ * Children removed from home
+removal_ind
+N    95.540071
+Y     4.459929
+Name: rate, dtype: float64
+
+ * Data grouped by zip code
+  zipcode  total_population  r_count  ref_rate
+0   90001             57110     1968  3.445981
+1   90002             51223     2272  4.435507
+2   90003             66266     3549  5.355688
+3   90004             62180      745  1.198134
+4   90005             37681      671  1.780738
+
+ * 10 zip codes that have the highest referral rate (referrals/population)
+   zipcode  ref_rate
+46   90058  5.584859
+2    90003  5.355688
+38   90044  4.476548
+1    90002  4.435507
+48   90061  4.339089
+47   90059  4.104806
+28   90033  3.698927
+8    90011  3.678820
+32   90037  3.614555
+0    90001  3.445981
+'Number of DCFS referrals in each zip code map' (r_count_map.html) is saved in the directory.
+'Number of DCFS referral rates per population in each zip code map' (ref_rate_map.html) is saved in the directory.
+
+ ***************************
+ * Combined data analysis * 
+ ***************************
+
+ Combine crime data, DCFS data, and walk score data together by joining on zip code.
+
+ * Combined dataset
+Index(['zipcode', 'c_count', 'inti_part', 'total_population', 'crime_rate',
+       'DV_rate', 'r_count', 'ref_rate', 'walk_score'],
+      dtype='object')
+  zipcode  c_count  inti_part  ...  r_count  ref_rate  walk_score
+0   90001      941       87.0  ...     1968  3.445981          67
+1   90002     3291      340.0  ...     2272  4.435507          67
+2   90003     6465      658.0  ...     3549  5.355688          70
+3   90004     1890      156.0  ...      745  1.198134          84
+4   90005     2000      133.0  ...      671  1.780738          93
+
+[5 rows x 9 columns]
+
+ * Correlation Coefficient between key variables
+['crime_rate', 'DV_rate', 'ref_rate', 'walk_score']
+[[1.         0.00262503 0.02064652 0.33091482]
+ [0.00262503 1.         0.66134841 0.12378573]
+ [0.02064652 0.66134841 1.         0.11030228]
+ [0.33091482 0.12378573 0.11030228 1.        ]]
+
+ * Pearson r 
+crime_rate and walk_score are significantly correlated.
+r = 0.33 and p = 0.000
+DV_rate and ref_rate are significantly correlated.
+r = 0.66 and p = 0.000
+
+ * Relationship between the number of domestic violence reports and DCFS referrals.
