@@ -1,7 +1,7 @@
 # ReferralCrimeMap
  I accessed and analyzed multiple datasets (LAPD crime data, Dep. of Child and Families Services referral data, LA walk score, LA city zip codes, LA population) to see if community atmosphere is relevant to child maltreatment. For community atmosphere, LAPD crime reports and walk score data were used. For child maltreatment, DCFS child referral records were used. This project analyzed those data in LA city in 2016 at a zip code level. In this project, I used python language to get data through API and web-scraping, then stored them in a database using SQL. I merged the datasets to analyze. I mapped the frequency of maltreatment data and crime reports at a zip code level on the map of LA city. I also created charts and graphs to show the results.
  
- ![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+ ![alt text](https://github.com/eunieunz/ReferralCrimeMap/blob/master/output/UML_diagram.png?raw=true)
 
  
 1. How to run the code
